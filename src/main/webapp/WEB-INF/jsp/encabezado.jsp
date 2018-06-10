@@ -1,1 +1,1 @@
-<h1>Este es el encabezado</h1>
+<h1></h1>

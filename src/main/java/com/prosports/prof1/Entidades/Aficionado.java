@@ -29,3 +29,10 @@ public class Aficionado extends Usuario {
         this.sexo = sexo;
     }
 }
+
+//sobrescribir update save para usar strategy
+
+//objeto strategy
+//
+//ca128 bits
+//algoritmos de encriptacion de dsatos
