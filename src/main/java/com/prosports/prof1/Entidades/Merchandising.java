@@ -22,6 +22,9 @@ public class Merchandising {
     @Column(nullable = false)
     private double precio;
 
+    public Merchandising() {
+    }
+
     public Merchandising(int codigo,
                          String nombre,
                          String descripcion,

@@ -5,11 +5,19 @@
 <f1:base>
     <jsp:body>
         <div class="container">
-            <div class="row">
-                <div class="col">
-
+            <c:forEach var="producto" items="${productos}">
+                <div class="row">
+                    <div class="col">
+                        <h3>${producto.nombre}</h3>
+                        <p>
+                            ${producto.descripcion}
+                        </p>
+                        <span>
+                            ${producto.precio}
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </jsp:body>
 </f1:base>
