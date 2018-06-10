@@ -4,6 +4,12 @@
 
 <f1:base>
     <jsp:body>
-        <h2>${mensaje}</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
     </jsp:body>
 </f1:base>
