@@ -28,7 +28,13 @@ public abstract class Usuario {
 
     @Column(nullable = false)
     private String contrasena;
-
+    
+	public Usuario() {
+		this.correoElectronico = "";
+        this.contrasena = "";
+	}
+	
+	
     public Usuario(int codigo,
                    String nombre,
                    String apellidoPaterno,
@@ -43,4 +49,66 @@ public abstract class Usuario {
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
     }
+
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getApellidoPaterno() {
+		return apellidoPaterno;
+	}
+
+
+	public void setApellidoPaterno(String apellidoPaterno) {
+		this.apellidoPaterno = apellidoPaterno;
+	}
+
+
+	public String getApellidoMaterno() {
+		return apellidoMaterno;
+	}
+
+
+	public void setApellidoMaterno(String apellidoMaterno) {
+		this.apellidoMaterno = apellidoMaterno;
+	}
+
+
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+    
+    
 }

@@ -1,6 +1,7 @@
 insert into aficionado(nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena, edad, sexo)
 values('Eric', 'Huiza', 'Pereyra', 'eric.huiza@pucp.edu.pe', 'pucp12345', 35, 'M');
-
+insert into aficionado(nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena, edad, sexo)
+values('Cristian', 'Percca', 'Julca', 'cristian.percca.julca@gmail.com', '123456', 23, 'M');
 insert into merchandising(nombre, descripcion, precio)
 values ('Gorra Ferrari', 'Gorra Ferrari del equipo', 150.00);
 insert into merchandising(nombre, descripcion, precio)

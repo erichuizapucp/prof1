@@ -1,8 +1,10 @@
 package com.prosports.prof1.Repositorios;
 
-import com.prosports.prof1.Entidades.Merchandising;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AficionadosRepo extends CrudRepository<Merchandising, Integer> {
+import com.prosports.prof1.Entidades.Aficionado;
+import com.prosports.prof1.Entidades.Usuario;
+
+public interface AficionadosRepo extends CrudRepository<Aficionado, Integer> {
 
 }

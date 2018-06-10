@@ -1,6 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f1" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <f1:base>
     <jsp:body>
@@ -10,35 +11,35 @@
 	        		<h3 style="text-align:center;">Crear Cuenta de Aficionado</h3>
 	        	</div>
 				<div class="col-md-4 offset-md-4 border border-primary" >
-					<form class="p-2">
+					<form class="p-2" method="POST" action="crear" modelAttribute="user">
 					  	
 					  	<div class="form-group">
 					    	<label for="exampleInputEmail1">Nombre</label>
-					    	<input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Ingrese su nombre">
+					    	<form:input name="nombre" path="nombre"  type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Ingrese su nombre"/>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="exampleInputPassword1">Apellido Paterno</label>
-					    	<input type="text" class="form-control" id="apellidop" placeholder="Ingrese su Apellido Paterno">
+					    	<form:input name="apellidoPaterno" path="apellidoPaterno"  type="text" class="form-control" id="apellidop" placeholder="Ingrese su Apellido Paterno"/>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="exampleInputEmail1">Apellido Materno</label>
-					    	<input type="text" class="form-control" id="apellidom" aria-describedby="emailHelp" placeholder="Ingrese su Apellido Materno">
+					    	<form:input  name="apellidoMaterno" path="apellidoMaterno"  type="text" class="form-control" id="apellidom" aria-describedby="emailHelp" placeholder="Ingrese su Apellido Materno"/>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="exampleInputPassword1">Edad</label>
-					    	<input type="number" class="form-control" id="edad" placeholder="Ingrese su Edad">
+					    	<form:input name="edad" path="edad"  type="number" class="form-control" id="edad" placeholder="Ingrese su Edad"/>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="exampleInputPassword1">Sexo</label>
-					    	<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su Sexo">
+					    	<form:input name="sexo" path="sexo"  type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su Sexo"/>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="exampleInputEmail1">Correo 	Electrónico</label>
-					    	<input type="email" class="form-control" id="correoe" aria-describedby="emailHelp" placeholder="Ingrese su Correo Electrónico">
+					    	<form:input  path="correoElectronico"  name="correoElectronico"  type="email" class="form-control" id="correoe" aria-describedby="emailHelp" placeholder="Ingrese su Correo Electrónico"/>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="exampleInputPassword1">Contraseña</label>
-					    	<input type="password" class="form-control" id="contrasena" placeholder="Ingrese su Contraseña">
+					    	<form:input path="contrasena" name="contrasena"  type="password" class="form-control" id="contrasena" placeholder="Ingrese su Contraseña"/>
 					  	</div>
 						<button type="submit" class="btn btn-primary btn-block">Enviar</button>
 					</form>
