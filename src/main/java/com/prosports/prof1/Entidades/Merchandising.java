@@ -22,16 +22,20 @@ public class Merchandising {
     @Column(nullable = false)
     private double precio;
 
+    private String imagen;
+
     public Merchandising() {
     }
 
     public Merchandising(int codigo,
                          String nombre,
                          String descripcion,
-                         double precio) {
+                         double precio,
+                         String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.imagen = imagen;
     }
 }
