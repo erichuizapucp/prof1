@@ -1,15 +1,10 @@
 package com.prosports.prof1.Entidades;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 
 @Entity
-@Getter
-@Setter
 public class Aficionado extends Usuario {
     @Column(nullable = false)
     private int edad;
