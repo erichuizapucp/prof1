@@ -2,6 +2,7 @@ package com.prosports.prof1.Controladores;
 
 import com.prosports.prof1.Entidades.Merchandising;
 import com.prosports.prof1.Repositorios.ProductosRepo;
+import com.prosports.prof1.Servicios.IReportesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ public class ControladorProductos {
 
     @Autowired
     protected ProductosRepo productosRepo;
+
+    @Autowired
+    protected IReportesService reportesService;
 
     @RequestMapping("/")
     public ModelAndView obtenerTodosLosProductos(HttpServletRequest request, HttpServletResponse response) {

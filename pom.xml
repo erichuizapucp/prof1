@@ -70,6 +70,19 @@
 			<version>1.16.20</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -79,7 +92,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<jvmArguments>
-						-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+						 -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
 					</jvmArguments>
 				</configuration>
 			</plugin>
