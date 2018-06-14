@@ -2,6 +2,7 @@ package com.prosports.prof1.Patrones.Decorador;
 
 import com.prosports.prof1.Entidades.Merchandising;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class ListaEnPantalla extends DecoradorListadoProductos {
     }
 
     public List<Merchandising> generarListaEnPantalla() {
-        return null;
+        List<Merchandising> productos = new ArrayList<>();
+        productosRepo.findAll().forEach(productos :: add);
+
+        return productos;
     }
 }
