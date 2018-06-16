@@ -3,7 +3,7 @@ package com.prosports.prof1.Controladores;
 import com.prosports.prof1.Entidades.Merchandising;
 import com.prosports.prof1.Patrones.Decorador.*;
 import com.prosports.prof1.Repositorios.ProductosRepo;
-import com.prosports.prof1.Servicios.IEmailService;
+import com.prosports.prof1.Patrones.Strategy.IEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,10 +20,6 @@ public class ControladorProductos {
 
     @Autowired
     protected ProductosRepo productosRepo;
-
-//    @Autowired
-//    @Qualifier("listado")
-//    protected ListadoProductos listaPantalla;
 
     @Autowired
     @Qualifier("listadoCorreo")
@@ -48,24 +44,18 @@ public class ControladorProductos {
     }
 
     @RequestMapping("/reporte")
-    public ModelAndView obtenerTodosLosProductos(@RequestParam(value = "opcion", required = false) String option) {
+    public ModelAndView obtenerReporte(@RequestParam(value = "opcion", required = false) String option) {
         ListadoProductos listado;
         Map<String, Object> datosReporte;
 
         if (option.equals(TipoListado.EXCEL)) {
             listado = listaExcel;
             datosReporte = listado.obtenerListado();
-
-
         }
         else {
             listado = listaCorreo;
             datosReporte = listado.obtenerListado();
         }
-
-
-
-
 
         return null;
     }

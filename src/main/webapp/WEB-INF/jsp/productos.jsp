@@ -37,7 +37,7 @@
                 <div class="col-2">
                     <form action="reporte" method="get">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" value="correo" id="correo" name="opcion">
+                            <input class="form-check-input" type="radio" value="correo" id="correo" name="opcion" checked>
                             <label class="form-check-label" for="correo">
                                 Enviar por correo
                             </label>
@@ -45,7 +45,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" value="excel" id="excel" name="opcion">
                             <label class="form-check-label" for="excel">
-                                Adjuntar a Excel
+                                Exportar a Excel
                             </label>
                         </div>
                         <div>

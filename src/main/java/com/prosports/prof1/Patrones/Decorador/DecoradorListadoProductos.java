@@ -13,14 +13,10 @@ import java.util.Map;
 public abstract class DecoradorListadoProductos implements ListadoProductos {
     @Autowired
     @Qualifier("listado")
-    protected ListadoProductos listadoProductos;
+    private ListadoProductos listadoProductos;
 
     @Autowired
     protected ProductosRepo productosRepo;
-
-//    public DecoradorListadoProductos(ListadoProductos listadoProductos) {
-//        this.listadoProductos = listadoProductos;
-//    }
 
     @Override
     public Map<String, Object> obtenerListado() {

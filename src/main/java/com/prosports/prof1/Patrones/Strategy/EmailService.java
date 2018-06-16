@@ -1,4 +1,4 @@
-package com.prosports.prof1.Servicios;
+package com.prosports.prof1.Patrones.Strategy;
 
 import org.springframework.stereotype.Component;
 

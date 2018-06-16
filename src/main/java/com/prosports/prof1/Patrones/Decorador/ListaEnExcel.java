@@ -7,7 +7,8 @@ import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Iterator;
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @Component("listadoExcel")
@@ -20,21 +21,17 @@ public class ListaEnExcel extends DecoradorListadoProductos {
 
     private final String FUENTE_FAMILIA = "Arial";
 
-//    public ListaEnExcel(ListadoProductos listadoProductos) {
-//        super(listadoProductos);
-//    }
-
     @Override
     public Map<String, Object> obtenerListado() {
         Map<String, Object> list = super.obtenerListado();
 
-        Object listaEnExcel = generarListaEnExcel();
+        Object listaEnExcel = generarListaEnExcel(list);
         list.put(TipoListado.EXCEL, listaEnExcel);
 
         return list;
     }
 
-    public Object generarListaEnExcel() {
+    public byte[] generarListaEnExcel(Map<String, Object> list) {
         ByteArrayOutputStream salida = new ByteArrayOutputStream();
 
         Workbook libroTrabajo = new HSSFWorkbook();
@@ -45,12 +42,23 @@ public class ListaEnExcel extends DecoradorListadoProductos {
         int indiceFilas = 2;
         agregarCabeceras(libroTrabajo, hojaTrabajo);
 
-        Iterator<Merchandising> it = productosRepo.findAll().iterator();
-        while (it.hasNext()) {
-            agregarFilas(libroTrabajo, hojaTrabajo, it.next(), (short)indiceFilas++);
+        List<Merchandising> productos = (List<Merchandising>)list.get(TipoListado.PANTALLA);
+
+        for (Merchandising producto : productos) {
+            agregarFilas(libroTrabajo, hojaTrabajo, producto, (short)indiceFilas++);
         }
 
-        return null;
+        byte[] datos = null;
+        try {
+            libroTrabajo.write(salida);
+            datos = salida.toByteArray();
+            salida.close();
+        }
+        catch (IOException e) {
+            System.err.println(e.getStackTrace());
+        }
+
+        return datos;
     }
 
     private void agregarCabeceras(Workbook libroTrabajo, Sheet hojaTrabajo) {
