@@ -1,19 +1,20 @@
 package com.prosports.prof1.Patrones.Decorador;
 
 import com.prosports.prof1.Entidades.Merchandising;
+import com.prosports.prof1.Repositorios.ProductosRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.List;
+import java.util.*;
 
-public class ListaEnPantalla extends DecoradorListadoProductos {
-    public ListaEnPantalla(ListadoProductos listadoProductos) {
-        super(listadoProductos);
-    }
+@Component("listado")
+public class ListaEnPantalla implements ListadoProductos {
+    @Autowired
+    protected ProductosRepo productosRepo;
 
     @Override
-    public Dictionary<String, Object> obtenerListado() {
-        Dictionary<String, Object> list = super.obtenerListado();
+    public Map<String, Object> obtenerListado() {
+        Map<String, Object> list = new HashMap<>();
 
         List<Merchandising> listaEnPantalla = generarListaEnPantalla();
         list.put(TipoListado.PANTALLA, listaEnPantalla);

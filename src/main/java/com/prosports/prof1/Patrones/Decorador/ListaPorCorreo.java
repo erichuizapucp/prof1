@@ -4,21 +4,22 @@ import com.prosports.prof1.Entidades.Merchandising;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.springframework.stereotype.Component;
 
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
+import java.util.Map;
 
+@Component("listadoCorreo")
 public class ListaPorCorreo extends DecoradorListadoProductos {
-    public ListaPorCorreo(ListadoProductos listadoProductos) {
-        super(listadoProductos);
-    }
+//    public ListaPorCorreo(ListadoProductos listadoProductos) {
+//        super(listadoProductos);
+//    }
 
     @Override
-    public Dictionary<String, Object> obtenerListado() {
-        Dictionary<String, Object> list = super.obtenerListado();
+    public Map<String, Object> obtenerListado() {
+        Map<String, Object> list = super.obtenerListado();
 
         Object listaPorCorreo = generarListaPorCorreo();
         list.put(TipoListado.CORREO, listaPorCorreo);

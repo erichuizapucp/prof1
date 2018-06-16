@@ -35,16 +35,16 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <form action="/reporte" method="post" >
+                    <form action="reporte" method="get">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="ckCorreo">
-                            <label class="form-check-label" for="ckCorreo">
+                            <input class="form-check-input" type="radio" value="correo" id="correo" name="opcion">
+                            <label class="form-check-label" for="correo">
                                 Enviar por correo
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="ckExcel">
-                            <label class="form-check-label" for="ckExcel">
+                            <input class="form-check-input" type="radio" value="excel" id="excel" name="opcion">
+                            <label class="form-check-label" for="excel">
                                 Adjuntar a Excel
                             </label>
                         </div>

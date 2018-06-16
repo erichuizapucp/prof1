@@ -1,7 +1,7 @@
 package com.prosports.prof1.Patrones.Decorador;
 
-import java.util.Dictionary;
+import java.util.Map;
 
 public interface ListadoProductos {
-    Dictionary<String, Object> obtenerListado();
+    Map<String, Object> obtenerListado();
 }
