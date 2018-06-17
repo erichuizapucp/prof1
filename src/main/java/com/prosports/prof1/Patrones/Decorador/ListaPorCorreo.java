@@ -28,7 +28,6 @@ public class ListaPorCorreo extends DecoradorListadoProductos {
         VelocityEngine engine = new VelocityEngine();
         engine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
         engine.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-
         engine.init();
 
         Template template = engine.getTemplate("templates/email.vm");
@@ -36,7 +35,7 @@ public class ListaPorCorreo extends DecoradorListadoProductos {
         List<Merchandising> productos = (List<Merchandising>)list.get(TipoListado.PANTALLA);
 
         VelocityContext context = new VelocityContext();
-        context.put("products", productos);
+        context.put("productos", productos);
 
         StringWriter writer = new StringWriter();
         template.merge(context, writer);

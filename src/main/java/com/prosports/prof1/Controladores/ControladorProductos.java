@@ -2,8 +2,9 @@ package com.prosports.prof1.Controladores;
 
 import com.prosports.prof1.Entidades.Merchandising;
 import com.prosports.prof1.Patrones.Decorador.*;
+import com.prosports.prof1.Patrones.Strategy.EstrategiaReportes;
+import com.prosports.prof1.Patrones.Strategy.ServicioReportes;
 import com.prosports.prof1.Repositorios.ProductosRepo;
-import com.prosports.prof1.Patrones.Strategy.IEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,24 +14,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ControladorProductos {
 
     @Autowired
     protected ProductosRepo productosRepo;
+    @Autowired
+    protected ServicioReportes reportes;
 
+    //  Decoradores concretos
     @Autowired
     @Qualifier("listadoCorreo")
     protected ListadoProductos listaCorreo;
-
     @Autowired
     @Qualifier("listadoExcel")
     protected ListadoProductos listaExcel;
 
+
+    // Estrategias concretas
     @Autowired
-    protected IEmailService emailService;
+    @Qualifier("reporteExcel")
+    protected EstrategiaReportes reporteExcel;
+    @Autowired
+    @Qualifier("reporteCorreo")
+    protected EstrategiaReportes reporteCorreo;
 
     @RequestMapping("/")
     public ModelAndView obtenerTodosLosProductos() {
@@ -45,16 +53,11 @@ public class ControladorProductos {
 
     @RequestMapping("/reporte")
     public ModelAndView obtenerReporte(@RequestParam(value = "opcion", required = false) String option) {
-        ListadoProductos listado;
-        Map<String, Object> datosReporte;
-
         if (option.equals(TipoListado.EXCEL)) {
-            listado = listaExcel;
-            datosReporte = listado.obtenerListado();
+            reportes.procesarReporte(reporteExcel, listaExcel.obtenerListado());
         }
         else {
-            listado = listaCorreo;
-            datosReporte = listado.obtenerListado();
+            reportes.procesarReporte(reporteCorreo, listaCorreo.obtenerListado());
         }
 
         return null;

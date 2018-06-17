@@ -8,7 +8,7 @@
         <tr>
             <td>$producto.nombre</td>
             <td>$producto.descripcion</td>
-            <td>$producto.precio</td>
+            <td>S/ $producto.precio</td>
         </tr>
     #end
 </table>
