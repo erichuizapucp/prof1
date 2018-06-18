@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component("listado")
-public class ListaEnPantalla implements ListadoProductos {
+public class ListaSimple implements ListadoProductos {
     @Autowired
     protected ProductosRepo productosRepo;
 
@@ -17,7 +17,7 @@ public class ListaEnPantalla implements ListadoProductos {
         Map<String, Object> list = new HashMap<>();
 
         List<Merchandising> listaEnPantalla = generarListaEnPantalla();
-        list.put(TipoListado.PANTALLA, listaEnPantalla);
+        list.put(TipoListado.SIMPLE, listaEnPantalla);
 
         return list;
     }

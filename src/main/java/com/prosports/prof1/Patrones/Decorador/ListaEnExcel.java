@@ -38,7 +38,7 @@ public class ListaEnExcel extends DecoradorListadoProductos {
         int indiceFilas = 2;
         agregarCabeceras(libroTrabajo, hojaTrabajo);
 
-        List<Merchandising> productos = (List<Merchandising>)list.get(TipoListado.PANTALLA);
+        List<Merchandising> productos = (List<Merchandising>)list.get(TipoListado.SIMPLE);
 
         for (Merchandising producto : productos) {
             agregarFilas(libroTrabajo, hojaTrabajo, producto, (short)indiceFilas++);

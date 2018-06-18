@@ -32,7 +32,7 @@ public class ListaPorCorreo extends DecoradorListadoProductos {
 
         Template template = engine.getTemplate("templates/email.vm");
 
-        List<Merchandising> productos = (List<Merchandising>)list.get(TipoListado.PANTALLA);
+        List<Merchandising> productos = (List<Merchandising>)list.get(TipoListado.SIMPLE);
 
         VelocityContext context = new VelocityContext();
         context.put("productos", productos);
