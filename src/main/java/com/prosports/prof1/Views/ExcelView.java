@@ -1,24 +1,34 @@
 package com.prosports.prof1.Views;
 
 import com.prosports.prof1.Patrones.Decorador.TipoListado;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.web.servlet.view.AbstractView;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
-public class ExcelView extends AbstractXlsView {
+public class ExcelView extends AbstractView {
+    public ExcelView() {
+        this.setContentType("application/vnd.ms-excel");
+    }
+
     @Override
-    protected void buildExcelDocument(Map<String, Object> model,
-                                      Workbook workbook,
-                                      HttpServletRequest request,
-                                      HttpServletResponse response) throws Exception {
+    protected void renderMergedOutputModel(Map<String, Object> model,
+                                           HttpServletRequest request,
+                                           HttpServletResponse response) throws Exception {
+        Workbook workbook = (Workbook)model.get(TipoListado.EXCEL);
+        response.setContentType(this.getContentType());
+        this.renderWorkbook(workbook, response);
+    }
 
-        response.setContentType("application/vnd.ms-excel");
-        response.setHeader("Content-Disposition", "attachment; filename=\"reporte.xls\"");
-
-        workbook = (Workbook)model.get(TipoListado.EXCEL);
-        workbook.createSheet("test");
+    protected void renderWorkbook(Workbook workbook, HttpServletResponse response) throws IOException {
+        ServletOutputStream out = response.getOutputStream();
+        workbook.write(out);
+        workbook.close();
     }
 }

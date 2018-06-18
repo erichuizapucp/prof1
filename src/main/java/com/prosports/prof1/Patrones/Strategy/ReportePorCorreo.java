@@ -9,6 +9,8 @@ import java.util.Map;
 public class ReportePorCorreo implements EstrategiaReportes {
     @Override
     public ModelAndView procesarReporte(Map<String, Object> datosReporte) {
+        // Incluir código para envio de correo
+
         return new ModelAndView("correo", datosReporte);
     }
 }

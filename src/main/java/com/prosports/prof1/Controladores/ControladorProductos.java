@@ -70,7 +70,7 @@ public class ControladorProductos {
         return model;
     }
 
-    @RequestMapping(value = "/reporte", produces = { "application/vnd.ms-excel", "text/html" })
+    @RequestMapping(value = "/reporte")
     public @ResponseBody ModelAndView obtenerReporte(@RequestParam(value = "opcion", required = false) String option) {
         if (option.equals(TipoListado.EXCEL)) {
             return reportes.procesarReporte(reporteExcel, listaExcel.obtenerListado());
