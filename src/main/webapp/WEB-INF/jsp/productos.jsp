@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <form action="reporte" method="get">
+                    <form action="reporte" method="get" target="_blank">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" value="correo" id="correo" name="opcion" checked>
                             <label class="form-check-label" for="correo">

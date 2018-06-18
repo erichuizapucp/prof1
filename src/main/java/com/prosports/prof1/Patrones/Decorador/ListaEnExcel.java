@@ -6,8 +6,6 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -31,9 +29,7 @@ public class ListaEnExcel extends DecoradorListadoProductos {
         return list;
     }
 
-    public byte[] generarListaEnExcel(Map<String, Object> list) {
-        ByteArrayOutputStream salida = new ByteArrayOutputStream();
-
+    public Workbook generarListaEnExcel(Map<String, Object> list) {
         Workbook libroTrabajo = new HSSFWorkbook();
         String nombreHojaCalculo = "Listado de Productos";
 
@@ -48,17 +44,7 @@ public class ListaEnExcel extends DecoradorListadoProductos {
             agregarFilas(libroTrabajo, hojaTrabajo, producto, (short)indiceFilas++);
         }
 
-        byte[] datos = null;
-        try {
-            libroTrabajo.write(salida);
-            datos = salida.toByteArray();
-            salida.close();
-        }
-        catch (IOException e) {
-            System.err.println(e.getStackTrace());
-        }
-
-        return datos;
+        return libroTrabajo;
     }
 
     private void agregarCabeceras(Workbook libroTrabajo, Sheet hojaTrabajo) {
@@ -136,12 +122,5 @@ public class ListaEnExcel extends DecoradorListadoProductos {
         Cell celda = fila.createCell(columna);
         celda.setCellValue(valor);
         celda.setCellStyle(estilo);
-    }
-
-    private void redimensionarColumnas(Sheet holaTrabajo) {
-        holaTrabajo.autoSizeColumn(PRIMERA_COLUMNA);
-        holaTrabajo.autoSizeColumn(PRIMERA_COLUMNA + 1);
-        holaTrabajo.autoSizeColumn(PRIMERA_COLUMNA + 2);
-        holaTrabajo.autoSizeColumn(PRIMERA_COLUMNA + 3);
     }
 }

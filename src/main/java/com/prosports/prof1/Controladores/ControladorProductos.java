@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +30,6 @@ public class ControladorProductos {
     @Autowired
     @Qualifier("listadoExcel")
     protected ListadoProductos listaExcel;
-
 
     // Estrategias concretas
     @Autowired
@@ -51,15 +50,13 @@ public class ControladorProductos {
         return model;
     }
 
-    @RequestMapping("/reporte")
-    public ModelAndView obtenerReporte(@RequestParam(value = "opcion", required = false) String option) {
+    @RequestMapping(value = "/reporte", produces = { "application/vnd.ms-excel", "text/html" })
+    public @ResponseBody ModelAndView obtenerReporte(@RequestParam(value = "opcion", required = false) String option) {
         if (option.equals(TipoListado.EXCEL)) {
-            reportes.procesarReporte(reporteExcel, listaExcel.obtenerListado());
+            return reportes.procesarReporte(reporteExcel, listaExcel.obtenerListado());
         }
         else {
-            reportes.procesarReporte(reporteCorreo, listaCorreo.obtenerListado());
+            return reportes.procesarReporte(reporteCorreo, listaCorreo.obtenerListado());
         }
-
-        return null;
     }
 }
