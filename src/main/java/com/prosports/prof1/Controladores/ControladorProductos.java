@@ -1,6 +1,5 @@
 package com.prosports.prof1.Controladores;
 
-import com.prosports.prof1.Entidades.Merchandising;
 import com.prosports.prof1.Patrones.Composite.Componente;
 import com.prosports.prof1.Patrones.Composite.ComponenteGrupoDeProductos;
 import com.prosports.prof1.Patrones.Composite.ComponenteProducto;
@@ -19,8 +18,6 @@ import org.springframework.web.servlet.ViewResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class ControladorProductos {
@@ -51,9 +48,6 @@ public class ControladorProductos {
 
     @RequestMapping("/")
     public ModelAndView obtenerTodosLosProductos(HttpServletRequest request, HttpServletResponse response) {
-        List<Merchandising> merchandising = new ArrayList<>();
-        productosRepo.findAll().forEach(merchandising :: add);
-
         Componente grupoDeProductos = new ComponenteGrupoDeProductos();
         grupoDeProductos.setViewResolver(viewResolver);
 
