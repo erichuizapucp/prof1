@@ -1,7 +1,5 @@
 package com.prosports.prof1.Patrones.Composite;
 
-import com.prosports.prof1.Entidades.Merchandising;
-
 import java.util.ArrayList;
 import java.util.List;
 
