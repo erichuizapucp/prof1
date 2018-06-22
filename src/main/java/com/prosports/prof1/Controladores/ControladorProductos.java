@@ -24,8 +24,6 @@ public class ControladorProductos {
 
     @Autowired
     protected ProductosRepo productosRepo;
-    @Autowired
-    protected ServicioReportes reportes;
 
     //  Decoradores concretos
     @Autowired
@@ -34,6 +32,11 @@ public class ControladorProductos {
     @Autowired
     @Qualifier("listadoExcel")
     protected ListadoProductos listaExcel;
+
+
+    // Cliente de las estregias
+    @Autowired
+    protected ServicioReportes reportes;
 
     // Estrategias concretas
     @Autowired
